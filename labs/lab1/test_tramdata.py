@@ -1,5 +1,6 @@
+import json
 import unittest
-from tramdata import *
+#from tramdata import *
 
 TRAM_FILE = './tramnetwork.json'
 
