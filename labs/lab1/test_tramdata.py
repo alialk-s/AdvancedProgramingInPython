@@ -1,6 +1,7 @@
 import json
 import unittest
-#from tramdata import *
+from .tramdata import *
+
 
 TRAM_FILE = './tramnetwork.json'
 
@@ -11,14 +12,14 @@ class TestTramData(unittest.TestCase):
             tramdict = json.loads(trams.read())
             self.stopdict = tramdict['stops']
             self.linedict = tramdict['lines']
+            self.timedict = tramdict['times']
 
-    def test_stops_exist(self):
-        stopset = {stop for line in self.linedict for stop in self.linedict[line]}
-        for stop in stopset:
-            self.assertIn(stop, self.stopdict, msg = stop + ' not in stopdict')
 
     # add your own tests here
 
+    def test_times_between_stops(self):
+        time = time_between_stops(self.linedict, self.timedict, 'Chalmers', 'Centralstationen')
+        assert time == 8
 
 if __name__ == '__main__':
     unittest.main()
