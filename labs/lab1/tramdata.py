@@ -4,7 +4,7 @@ import sys
 
 
 def build_tram_stops(jsonobject):
-    with open(jsonobject, 'r') as dict_file:
+    with open(jsonobject, 'r', encoding='utf-8') as dict_file:
         data = json.load(dict_file)
 
     stop_dict = {}  # a dict (of dicts) where the result will be stored
@@ -17,6 +17,7 @@ def build_tram_stops(jsonobject):
     return stop_dict
 
 
+# helper that returns a stop's name out of a txt line
 def get_stop_name(line):
     # remove any white space from left and right
     stop_name = line.strip()
@@ -28,6 +29,7 @@ def get_stop_name(line):
     return stop_name
 
 
+# helper that returns a stop's time out of a txt line
 def get_stop_time(line):
     # remove any white space from left and right
     stop_time = line.strip()
@@ -37,8 +39,12 @@ def get_stop_time(line):
     return stop_time
 
 
+# helper functions that returns time difference between to times, or exception when unsuitable arguments format
 def calculate_stop_time_difference(time1, time2):
-    return abs(int(time1[3: 5]) - int(time2[3: 5]))
+    try:
+        return abs(int(time1[3: 5]) - int(time2[3: 5]))
+    except:
+        raise Exception('Invalid arguments ')
 
 
 def build_tram_lines(txt_file):
@@ -69,6 +75,8 @@ def build_tram_lines(txt_file):
     return line_dict
 
 
+# helper function that returns a dict where keys are pairs(tuples) of connected stops and times between them are values
+# only (x, y) exists if x and y are connected, i.e (y, x) doesn't exist
 def pairs_dict_connected_stops_time(txt_file):
     with open(txt_file, 'r', encoding='utf-8') as file:
         lines = file.readlines()
@@ -116,7 +124,8 @@ def pairs_dict_connected_stops_time(txt_file):
 
 
 def build_tram_times(txt_file):
-    dict_pairs = pairs_dict_connected_stops_time(txt_file)  # check what dict_connected_stops_times() returns for smother
+    dict_pairs = pairs_dict_connected_stops_time(
+        txt_file)  # check what dict_connected_stops_times() returns for smother
     # understanding
     time_dict = {}  # the returning the dict, dict of dicts
     for pair in dict_pairs:
@@ -215,35 +224,34 @@ def time_between_stops(lines_dict, times_dict, line, stop1, stop2):
 
 
 def distance_between_stops(stop_dict, stop1, stop2):
-    if stop1 not in stop_dict or stop2 not in stop_dict:
-        return -1
-    else:
-        # get stop1 position information from stop dict
-        stop1_position = [stop_dict[c] for c in stop_dict if c == stop1][0]
-        # get stop2 position information from stop dict
-        stop2_position = [stop_dict[c] for c in stop_dict if c == stop2][0]
-        # stop1 latitude
-        stop1_lat = float(stop1_position['lat'])
-        # stop1 longitude
-        stop1_lon = float(stop1_position['lon'])
-        # stop2 latitude
-        stop2_lat = float(stop2_position['lat'])
-        # stop2 longitude
-        stop2_lon = float(stop2_position['lon'])
-        # radius of the earth in km
-        R = 6371.009
-        # mean latitude
-        mean_lat = ((stop1_lat + stop2_lat) * (math.pi / 180)) / 2
-        # delta latitude
-        delta_lat = (stop1_lat - stop2_lat) * (math.pi / 180)
-        # delta longitude
-        delta_lon = (stop1_lon - stop2_lon) * (math.pi / 180)
-        # calculate distance using the formula for Spherical Earth projected to a plane
-        distance = R * math.sqrt(math.pow(delta_lat, 2) + math.pow(math.cos(mean_lat) * delta_lon, 2))
+    # get stop1 position information from stop dict
+    stop1_position = [stop_dict[c] for c in stop_dict if c == stop1][0]
+    # get stop2 position information from stop dict
+    stop2_position = [stop_dict[c] for c in stop_dict if c == stop2][0]
+    # stop1 latitude
+    stop1_lat = float(stop1_position['lat'])
+    # stop1 longitude
+    stop1_lon = float(stop1_position['lon'])
+    # stop2 latitude
+    stop2_lat = float(stop2_position['lat'])
+    # stop2 longitude
+    stop2_lon = float(stop2_position['lon'])
+    # radius of the earth in km
+    R = 6371.009
+    # mean latitude
+    mean_lat = ((stop1_lat + stop2_lat) * (math.pi / 180)) / 2
+    # delta latitude
+    delta_lat = (stop1_lat - stop2_lat) * (math.pi / 180)
+    # delta longitude
+    delta_lon = (stop1_lon - stop2_lon) * (math.pi / 180)
+    # calculate distance using the formula for Spherical Earth projected to a plane
+    distance = R * math.sqrt(math.pow(delta_lat, 2) + math.pow(math.cos(mean_lat) * delta_lon, 2))
 
-        return distance.__round__(3)
+    return distance.__round__(3)
 
 
+# this function returns -1 when invalid arguments, so it can differ between
+# only invalid arguments and completely uninterpreted queries.
 def answer_query(tramdict, query):
     # remove any double white space from right, left or in between
     user_input = " ".join(query.split())
@@ -257,7 +265,8 @@ def answer_query(tramdict, query):
         if len(ans) == 0:
             ans = -1
     # if the query is between <stop1> and <stop2>
-    elif user_input[:8] == 'between ' and 'and' in user_input_as_list:
+    elif user_input[:8] == 'between ' and 'and' in user_input_as_list and user_input_as_list.index(
+            'between') + 1 < user_input_as_list.index('and') < len(user_input_as_list) - 1:
         # get stop1 name by slicing user_input_as_list and then converting it to a string again
         stop1 = ' '.join(
             user_input_as_list[user_input_as_list.index('between') + 1: user_input_as_list.index('and')])
@@ -293,8 +302,12 @@ def answer_query(tramdict, query):
         stop1 = ' '.join(user_input_as_list[user_input_as_list.index('from') + 1: user_input_as_list.index('to')])
         # get stop2 name by slicing user_input_as_list from 'to' to last element, and then reconverting it to a string
         stop2 = ' '.join(user_input_as_list[user_input_as_list.index('to') + 1: len(user_input_as_list)])
-        # get distance between stop1 and stop2
-        ans = distance_between_stops(tramdict['stops'], stop1, stop2)
+        # ignore non-existing stops
+        if stop1 not in tramdict['stops'] or stop2 not in tramdict['stops']:
+            ans = -1
+        else:
+            # get distance between stop1 and stop2
+            ans = distance_between_stops(tramdict['stops'], stop1, stop2)
     else:
         ans = False
 
@@ -330,7 +343,7 @@ def dialogue(jsonfile):
 
 
 if __name__ == '__main__':
-        if sys.argv[1:] == ['init']:
-            build_tram_network()
-        else:
-            dialogue('tramnetwork.json')
+    if sys.argv[1:] == ['init']:
+        build_tram_network()
+    else:
+        dialogue('tramnetwork.json')
