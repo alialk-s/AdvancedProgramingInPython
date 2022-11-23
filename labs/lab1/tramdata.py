@@ -69,8 +69,8 @@ def build_tram_lines(txt_file):
     return line_dict
 
 
-def pairs_dict_connected_stops_time():
-    with open('tramlines.txt', 'r', encoding='utf-8') as file:
+def pairs_dict_connected_stops_time(txt_file):
+    with open(txt_file, 'r', encoding='utf-8') as file:
         lines = file.readlines()
 
     dict_of_pairs = {}  # connected stops (as a pair) are keys and times between them are values
@@ -115,8 +115,8 @@ def pairs_dict_connected_stops_time():
     return dict_of_pairs
 
 
-def build_tram_times():
-    dict_pairs = pairs_dict_connected_stops_time()  # check what dict_connected_stops_times() returns for smother
+def build_tram_times(txt_file):
+    dict_pairs = pairs_dict_connected_stops_time(txt_file)  # check what dict_connected_stops_times() returns for smother
     # understanding
     time_dict = {}  # the returning the dict, dict of dicts
     for pair in dict_pairs:
@@ -161,7 +161,7 @@ def build_tram_network(json_file, txt_file):
     # dict of lines
     dict2 = build_tram_lines(txt_file)
     # dict of times
-    dict3 = build_tram_times()
+    dict3 = build_tram_times(txt_file)
     # combine all the previous dicts to result dict
     res_dict = {'stops': dict1, 'lines': dict2, 'times': dict3}
     # open json file, or create it if not exists
@@ -211,7 +211,7 @@ def time_between_stops(lines_dict, times_dict, line, stop1, stop2):
                 total_time += times_dict[st2][st1]
         return total_time
     else:
-        raise Exception("No such stops in this line")
+        raise Exception("No such pair of stops in this line")
 
 
 def distance_between_stops(stop_dict, stop1, stop2):
@@ -265,6 +265,9 @@ def answer_query(tramdict, query):
         stop2 = ' '.join(user_input_as_list[user_input_as_list.index('and') + 1: len(user_input_as_list)])
         # get possible lines through these two stops
         ans = lines_between_stops(tramdict['lines'], stop1, stop2)
+        # check if no such stops
+        if stop1 not in tramdict['stops'] or stop2 not in tramdict['stops']:
+            ans = -1
 
     # check if the query is time with <line> from <stop1> to <stop2>
     elif user_input[
@@ -280,10 +283,7 @@ def answer_query(tramdict, query):
         if line not in tramdict['lines'] or stop1 not in tramdict['stops'] or stop2 not in tramdict['stops']:
             ans = -1
         else:
-            try:
-                ans = time_between_stops(tramdict['lines'], tramdict['times'], line, stop1, stop2)
-            except:
-                ans = -1
+            ans = time_between_stops(tramdict['lines'], tramdict['times'], line, stop1, stop2)
 
     # check if the query is distance from <stop1> to <stop2>
     elif user_input[:14] == 'distance from ' and 'to' in user_input_as_list and user_input_as_list.index(
@@ -314,21 +314,23 @@ def dialogue(jsonfile):
             # terminate the loop
             get_more_input = False
         else:
-            # send query for processing and getting an answer back
-            ans = answer_query(tramdict, user_input)
-            # answer_query return -1 in those cases when arguments are unvalid
-            if ans == -1:
-                ans = 'unknown arguments'
-            # if the answer is False
-            elif not ans:
-                ans = 'sorry, try again'
-            # print the answer to the user
+            try:
+                # send query for processing and getting an answer back
+                ans = answer_query(tramdict, user_input)
+                # answer_query return -1 in those cases when arguments are invalid
+                if ans == -1:
+                    ans = 'unknown arguments'
+                # if the answer is False
+                elif type(ans) is not list and not ans:
+                    ans = 'sorry, try again'
+                # exception could occur from the function time_between_stops()
+            except Exception as e:
+                ans = str(e)
             print(ans)
 
 
 if __name__ == '__main__':
-    if sys.argv[1:] == ['init']:
-        build_tram_network()
-    else:
-        dialogue('tramnetwork.json')
-
+        if sys.argv[1:] == ['init']:
+            build_tram_network()
+        else:
+            dialogue('tramnetwork.json')
