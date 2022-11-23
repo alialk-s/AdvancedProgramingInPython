@@ -2,7 +2,6 @@ import json
 import unittest
 from tramdata import *
 
-# TRAM_FILE = 'C:/Users/46707/Desktop/AdvancedPython/AdvancedProgramingInPython/labs/lab1/tramnetwork.json'
 TRAM_FILE = 'tramnetwork.json'
 
 
@@ -61,7 +60,7 @@ class TestTramData(unittest.TestCase):
         for i in range(1, 5):
             stop_name = get_stop_name(lines[i])
             self.assertIn(stop_name, test_list)
-    
+
     def test_time_between_two_stops_is_always_the_same(self):
         for a in self.stopdict:
             for b in self.stopdict:
@@ -70,7 +69,7 @@ class TestTramData(unittest.TestCase):
                     time_from_b_to_a = time_between_stops(self.linedict, self.timedict, line, b, a)
 
                     self.assertEqual(time_from_a_to_b, time_from_b_to_a)
-    
+
     def test_all_distances_below_20(self):
         distance_limit = 20
         for stop1 in self.stopdict:
