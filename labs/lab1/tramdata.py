@@ -39,12 +39,12 @@ def get_stop_time(line):
     return stop_time
 
 
-# helper functions that returns time difference between to times, or exception when unsuitable arguments format
+# helper functions that returns time difference between to times.
+# Specification time1 and time2 must be in this format 'dd:dd', where d is digit
+# however, this only takes into consideration the difference in minutes sinces all times in the textfile are 10:xx
 def calculate_stop_time_difference(time1, time2):
-    try:
-        return abs(int(time1[3: 5]) - int(time2[3: 5]))
-    except:
-        raise Exception('Invalid arguments ')
+    return abs(int(time1[3: 5]) - int(time2[3: 5]))
+
 
 
 def build_tram_lines(txt_file):
