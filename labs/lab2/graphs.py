@@ -1,3 +1,5 @@
+import graphviz
+
 class Graph:
 
     def __init__(self, edgelist=None):
@@ -8,6 +10,8 @@ class Graph:
                 self.add_edge(a, b)
             self._valuelist = dict.fromkeys(self._adjacencylist, 0)
 
+    def __len__(self):
+        return len(self._adjacencylist)
 
     def neighbors(self, vertex):
         return self._adjacencylist[vertex]
@@ -23,37 +27,30 @@ class Graph:
                     edges.append((key, vertex))
         return edges
 
-    def __len__(self):
-        return len(self._adjacencylist)
-
     def add_vertex(self, vertex):
         if vertex not in self._adjacencylist:
             self._adjacencylist[vertex] = []
-            self._valuelist[vertex] = 0
+            self.set_vertex_value(vertex, 0)
 
-    def add_edge(self, vertex1, vertex2):
+    def add_edge(self, a, b):
         edges = self.edges()
-        if (vertex1, vertex2) not in edges and (vertex2, vertex1) not in edges:
-            if vertex1 not in self._adjacencylist:
-                self._adjacencylist[vertex1] = []  # create a list (value) for this vertex (key) if not exists
-            if vertex2 not in self._adjacencylist:
-                self._adjacencylist[vertex2] = []  # create a list (value) for this vertex (key) if not exists
-            self._adjacencylist[vertex1].append(vertex2)
-            self._adjacencylist[vertex2].append(vertex1)
+        if (a, b) not in edges and (b, a) not in edges:
+            self.add_vertex(a)
+            self.add_vertex(b)
+            self._adjacencylist[a].append(b)
+            self._adjacencylist[b].append(a)
 
     def remove_vertex(self, vertex):
         if vertex in self.vertices():
             self._adjacencylist.pop(vertex)
-            # remove all edges with this vertex as well
+            # remove all edges connected with this vertex as well
             for v in self._adjacencylist:
                 if vertex in self._adjacencylist[v]:
                     list(self._adjacencylist[v]).remove(vertex)
 
-    def remove_edge(self, vertex1, vertex2):
-        if (vertex1, vertex2) in self.edges():
-            list(self._adjacencylist[vertex1]).remove(vertex2)
-        if (vertex2, vertex1) in self.edges():
-            list(self._adjacencylist[vertex2]).remove(vertex1)
+    def remove_edge(self, a, b):
+        list(self._adjacencylist[a]).remove(b)
+        list(self._adjacencylist[b]).remove(a)
 
     def get_vertex_value(self, vertex):
         return self._valuelist[vertex]
@@ -65,17 +62,60 @@ class Graph:
 class WeightedGraph(Graph):
 
     def __init__(self, start=None):
-        super().__init__(start)
+        super(WeightedGraph, self).__init__(start)
         self._weightlist = {}
 
-    def get_weight(self, vertex1, vertex2):
-        if (vertex1, vertex2) in self._weightlist:
-            return self._weightlist[(vertex1, vertex2)]
-        if (vertex2, vertex1) in self._weightlist:
-            return self._weightlist[(vertex2, vertex1)]
+    def get_weight(self, a, b):
+        if (a, b) in self._weightlist:
+            return self._weightlist[(a, b)]
+        if (b, a) in self._weightlist:
+            return self._weightlist[(b, a)]
 
-    def set_weight(self, vertex1, vertex2, weight):
-        if (vertex1, vertex2) in self._weightlist:
-            self._weightlist[(vertex1, vertex2)] = weight
-        if (vertex2, vertex1) in self._weightlist:
-            self._weightlist[(vertex2, vertex1)] = weight
+    def set_weight(self, a, b, weight):
+        if (a, b) in self._weightlist:
+            self._weightlist[(a, b)] = weight
+        if (b, a) in self._weightlist:
+            self._weightlist[(b, a)] = weight
+
+
+def dijkstra(graph, source, cost=lambda u,v: 1):
+    paths = {}
+    unvisited_nodes = [v for v in graph.vertices()]
+    dist = {v: float('inf') for v in graph.vertices()}
+    prev = {v: None for v in graph.vertices()}
+    dist[source] = 0
+
+    while unvisited_nodes:
+        current_node = None
+        for node in unvisited_nodes:
+            if current_node == None or dist[node] < dist[current_node]:
+                current_node = node
+
+        # The code block below retrieves the current node's neighbors and updates their distances
+        for neighbor in graph.neighbors(current_node):
+            new_cost = dist[current_node] + cost(current_node, neighbor)
+            if new_cost < dist[neighbor]:
+                # update the cost of this neighbor
+                dist[neighbor] = new_cost
+                # update the prev dict to the current node
+                prev[neighbor] = current_node
+        # mark this node as visited
+        unvisited_nodes.remove(current_node)
+
+    return dist
+
+
+def visualize(graph, view='dot', name='tramGraph', nodecolors=None):
+    g = graphviz.Graph(name, filename=name, format='png', engine=view )
+
+    for v in graph.vertices():
+        if nodecolors != None and str(v) in nodecolors:
+            g.node(str(v),style='filled', color='orange')
+        else:
+            g.node(str(v))
+
+    for v in graph.edges():
+        g.edge(str(v[0]),str(v[1]))
+    g.render(view=True)
+
+

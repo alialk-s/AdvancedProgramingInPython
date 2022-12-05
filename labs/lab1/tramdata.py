@@ -46,7 +46,6 @@ def calculate_stop_time_difference(time1, time2):
     return abs(int(time1[3: 5]) - int(time2[3: 5]))
 
 
-
 def build_tram_lines(txt_file):
     with open(txt_file, 'r', encoding='utf-8') as file:
         lines = file.readlines()
@@ -223,6 +222,21 @@ def time_between_stops(lines_dict, times_dict, line, stop1, stop2):
         raise Exception("No such pair of stops in this line")
 
 
+def distance_between_two_points(a_lat, a_lon, b_lat, b_lon):
+    # radius of the earth in km
+    R = 6371.009
+    # mean latitude
+    mean_lat = ((a_lat + b_lat) * (math.pi / 180)) / 2
+    # delta latitude
+    delta_lat = (a_lat - b_lat) * (math.pi / 180)
+    # delta longitude
+    delta_lon = (a_lon - b_lon) * (math.pi / 180)
+    # calculate distance using the formula for Spherical Earth projected to a plane
+    distance = R * math.sqrt(math.pow(delta_lat, 2) + math.pow(math.cos(mean_lat) * delta_lon, 2))
+
+    return distance.__round__(3)
+
+
 def distance_between_stops(stop_dict, stop1, stop2):
     # get stop1 position information from stop dict
     stop1_position = [stop_dict[c] for c in stop_dict if c == stop1][0]
@@ -236,18 +250,8 @@ def distance_between_stops(stop_dict, stop1, stop2):
     stop2_lat = float(stop2_position['lat'])
     # stop2 longitude
     stop2_lon = float(stop2_position['lon'])
-    # radius of the earth in km
-    R = 6371.009
-    # mean latitude
-    mean_lat = ((stop1_lat + stop2_lat) * (math.pi / 180)) / 2
-    # delta latitude
-    delta_lat = (stop1_lat - stop2_lat) * (math.pi / 180)
-    # delta longitude
-    delta_lon = (stop1_lon - stop2_lon) * (math.pi / 180)
-    # calculate distance using the formula for Spherical Earth projected to a plane
-    distance = R * math.sqrt(math.pow(delta_lat, 2) + math.pow(math.cos(mean_lat) * delta_lon, 2))
 
-    return distance.__round__(3)
+    return distance_between_two_points(stop1_lat, stop1_lon, stop2_lat, stop2_lon)
 
 
 # this function returns -1 when invalid arguments, so it can differ between
@@ -258,7 +262,7 @@ def answer_query(tramdict, query):
     # convert the string to a list for easier indexing and slicing
     user_input_as_list = user_input.split(' ')
     # if the query is via <stop>
-    if user_input[:3] == 'via':
+    if user_input[:4] == 'via ':
         stop1 = user_input[4: len(user_input)]
         # get list of all possible traffic lines
         ans = lines_via_stop(tramdict['lines'], stop1)
@@ -344,6 +348,7 @@ def dialogue(jsonfile):
 
 if __name__ == '__main__':
     if sys.argv[1:] == ['init']:
-        build_tram_network()
+        build_tram_network('tramstops.json', 'tramlines.txt')
     else:
         dialogue('tramnetwork.json')
+
