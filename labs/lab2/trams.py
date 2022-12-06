@@ -50,8 +50,8 @@ class TramLine:
 
 class TramNetwork(WeightedGraph):
 
-    def __init__(self, lines, stops, times):
-        super(TramNetwork, self).__init__(None)
+    def __init__(self, lines, stops, times, start=None):
+        super(TramNetwork, self).__init__(start)
         self.__linedict = {}
         self.__stopdict = {}
         self.__timedict = {}
@@ -139,4 +139,6 @@ print(readTramNetwork().geo_distance('Chalmers', 'Järntorget'))
 
 print(readTramNetwork().extreme_position())
 
-print(dijkstra(readTramNetwork(), 'Chalmers'))
+print(dijkstra(readTramNetwork(), 'Chalmers')['Brunnsparken'])
+
+

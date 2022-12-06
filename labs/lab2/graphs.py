@@ -46,11 +46,12 @@ class Graph:
             # remove all edges connected with this vertex as well
             for v in self._adjacencylist:
                 if vertex in self._adjacencylist[v]:
-                    list(self._adjacencylist[v]).remove(vertex)
+                    self._adjacencylist[v].remove(vertex)
 
     def remove_edge(self, a, b):
-        list(self._adjacencylist[a]).remove(b)
-        list(self._adjacencylist[b]).remove(a)
+        if (a, b) in self.edges() or (b, a) in self.edges():
+            self._adjacencylist[a].remove(b)
+            self._adjacencylist[b].remove(a)
 
     def get_vertex_value(self, vertex):
         return self._valuelist[vertex]
@@ -79,10 +80,15 @@ class WeightedGraph(Graph):
 
 
 def dijkstra(graph, source, cost=lambda u,v: 1):
+    # the returning dict
     paths = {}
+    # initially, all nodes in the graph
     unvisited_nodes = [v for v in graph.vertices()]
+    # every node and its shortest path previous node
+    prev_nodes = {v: None for v in graph.vertices()}
+    # every node and its cost to the source, initially all costs are infinity
     dist = {v: float('inf') for v in graph.vertices()}
-    prev = {v: None for v in graph.vertices()}
+    # however, cost from source to source is zero
     dist[source] = 0
 
     while unvisited_nodes:
@@ -91,18 +97,30 @@ def dijkstra(graph, source, cost=lambda u,v: 1):
             if current_node == None or dist[node] < dist[current_node]:
                 current_node = node
 
-        # The code block below retrieves the current node's neighbors and updates their distances
         for neighbor in graph.neighbors(current_node):
             new_cost = dist[current_node] + cost(current_node, neighbor)
             if new_cost < dist[neighbor]:
                 # update the cost of this neighbor
                 dist[neighbor] = new_cost
-                # update the prev dict to the current node
-                prev[neighbor] = current_node
+                # update the prev_nodes dict to the current node
+                prev_nodes[neighbor] = current_node
         # mark this node as visited
         unvisited_nodes.remove(current_node)
 
-    return dist
+    for v in graph.vertices():
+        dist_node = v
+        path = []
+        while dist_node != source:
+            # add the dest. node
+            path.append(dist_node)
+            # update the dest.node
+            dist_node = prev_nodes[dist_node]
+        # finally, add the source to the path
+        path.append(source)
+        # store the shortest path from source to node v in paths (we have to reverse the path first!)
+        paths[v] = list(reversed(path))
+
+    return paths
 
 
 def visualize(graph, view='dot', name='tramGraph', nodecolors=None):
@@ -117,5 +135,21 @@ def visualize(graph, view='dot', name='tramGraph', nodecolors=None):
     for v in graph.edges():
         g.edge(str(v[0]),str(v[1]))
     g.render(view=True)
+
+
+def view_shortest(G, source, target, cost=lambda u, v: 1):
+    path = dijkstra(G, source, cost)[target]
+    print(path)
+    colormap = {str(v): 'orange' for v in path}
+    print(colormap)
+    visualize(G, view='view', nodecolors=colormap)
+
+
+def demo():
+    G = Graph([(1, 2), (1, 3), (1, 4), (3, 4), (3, 5), (3, 6), (3, 7), (6, 7)])
+    view_shortest(G, 2, 6)
+
+if __name__ == '__main__':
+    demo()
 
 
