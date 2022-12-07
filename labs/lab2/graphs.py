@@ -75,10 +75,8 @@ class WeightedGraph(Graph):
             return self._weightlist[(b, a)]
 
     def set_weight(self, a, b, weight):
-        if (a, b) in self._weightlist:
-            self._weightlist[(a, b)] = weight
-        if (b, a) in self._weightlist:
-            self._weightlist[(b, a)] = weight
+        self._weightlist[(a, b)] = weight
+
 
 
 def dijkstra(graph, source, cost=lambda u,v: 1):
