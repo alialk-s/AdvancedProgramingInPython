@@ -21,16 +21,16 @@ class Graph:
 
     def edges(self):
         edges = []
-        for key in self._adjacencylist:
-            for vertex in self._adjacencylist[key]:
-                if (vertex, key) not in edges:
-                    edges.append((key, vertex))
+        for a in self._adjacencylist:
+            for b in self._adjacencylist[a]:
+                if (b, a) not in edges and (a, b) not in edges:
+                    edges.append((a, b))
         return edges
 
     def add_vertex(self, vertex):
         if vertex not in self._adjacencylist:
             self._adjacencylist[vertex] = []
-            self.set_vertex_value(vertex, 0)
+            self.set_vertex_value(vertex, None)
 
     def add_edge(self, a, b):
         edges = self.edges()
@@ -43,10 +43,12 @@ class Graph:
     def remove_vertex(self, vertex):
         if vertex in self.vertices():
             self._adjacencylist.pop(vertex)
+            self._valuelist.pop(vertex)
             # remove all edges connected with this vertex as well
             for v in self._adjacencylist:
                 if vertex in self._adjacencylist[v]:
                     self._adjacencylist[v].remove(vertex)
+
 
     def remove_edge(self, a, b):
         if (a, b) in self.edges() or (b, a) in self.edges():
@@ -123,7 +125,7 @@ def dijkstra(graph, source, cost=lambda u,v: 1):
     return paths
 
 
-def visualize(graph, view='dot', name='tramGraph', nodecolors=None):
+def visualize(graph, view='dot', name='myGraph', nodecolors=None):
     g = graphviz.Graph(name, filename=name, format='png', engine=view )
 
     for v in graph.vertices():

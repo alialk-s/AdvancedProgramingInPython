@@ -118,6 +118,10 @@ class TramNetwork(WeightedGraph):
     def stop_position(self, stop):
         return self.__stopdict[stop].get_position()
 
+    def transition_time(self, a, b):
+        return self.get_weight(a, b)
+
+
 
 def readTramNetwork(tramfile=TRAM_FILE):
     with open(tramfile) as datafile:
@@ -130,15 +134,20 @@ def readTramNetwork(tramfile=TRAM_FILE):
     tnw = TramNetwork(line_dict, stop_dict, time_dict)
     return tnw
 
+def demo():
+    G = readTramNetwork()
+    a, b = input('from,to ').split(',')
+    view_shortest(G, a, b)
 
+if __name__ == '__main__':
+    pass
+    #demo()
 
-
-print(readTramNetwork().stop_position('Chalmers'))
-print(readTramNetwork().get_vertex_value('Chalmers'))
-print(readTramNetwork().geo_distance('Chalmers', 'Järntorget'))
-
-print(readTramNetwork().extreme_position())
-
-print(dijkstra(readTramNetwork(), 'Chalmers')['Brunnsparken'])
+print(readTramNetwork().transition_time('Wavrinskys Plats', 'Chalmers'))
+#print(readTramNetwork().stop_position('Chalmers'))
+#print(readTramNetwork().get_vertex_value('Chalmers'))
+#print(readTramNetwork().geo_distance('Chalmers', 'Järntorget'))
+#print(readTramNetwork().extreme_position())
+#print(dijkstra(readTramNetwork(), 'Chalmers')['Brunnsparken'])
 
 
