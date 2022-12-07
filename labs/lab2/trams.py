@@ -92,7 +92,7 @@ class TramNetwork(WeightedGraph):
         return td.distance_between_two_points(a_lat, a_lon, b_lat, b_lon)
 
     def extreme_position(self):
-        res_dict = {'max_lat' : 0, 'min_lat' : float('inf'), 'max_lon' : 0, 'min_lon' : float('inf')}
+        res_dict = {'max_lat': 0, 'min_lat': float('inf'), 'max_lon': 0, 'min_lon': float('inf')}
 
         for stop in self.__stopdict:
             position = self.__stopdict[stop].get_position()
@@ -110,6 +110,7 @@ class TramNetwork(WeightedGraph):
                 res_dict['min_lon'] = position[1]
 
         return res_dict
+
 
 
     def stop_lines(self, stop):
@@ -140,10 +141,10 @@ def demo():
     view_shortest(G, a, b)
 
 if __name__ == '__main__':
-    pass
-    #demo()
+    demo()
 
-print(readTramNetwork().transition_time('Wavrinskys Plats', 'Chalmers'))
+
+#print(readTramNetwork().transition_time('Wavrinskys Plats', 'Chalmers'))
 #print(readTramNetwork().stop_position('Chalmers'))
 #print(readTramNetwork().get_vertex_value('Chalmers'))
 #print(readTramNetwork().geo_distance('Chalmers', 'Järntorget'))
