@@ -34,7 +34,7 @@ class Graph:
 
     def add_edge(self, a, b):
         edges = self.edges()
-        if (a, b) not in edges and (b, a) not in edges:
+        if a != b and (a, b) not in edges and (b, a) not in edges:
             self.add_vertex(a)
             self.add_vertex(b)
             self._adjacencylist[a].append(b)
