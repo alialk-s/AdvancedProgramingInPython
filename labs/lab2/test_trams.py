@@ -50,8 +50,5 @@ class TestTrams(unittest.TestCase):
                 self.assertEqual(self.timesdict[a][b], tramnetwork_obj.transition_time(a, b))
 
 
-
-
-
 if __name__ == '__main__':
     unittest.main()
