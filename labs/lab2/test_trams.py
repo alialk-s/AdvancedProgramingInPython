@@ -6,7 +6,7 @@ from labs.lab2 import trams
 TRAM_FILE = '../lab1/tramnetwork.json'
 tramnetwork_obj = trams.readTramNetwork()
 
-class MyTestCase(unittest.TestCase):
+class TestTrams(unittest.TestCase):
 
     def setUp(self):
         with open(TRAM_FILE) as trams:

@@ -2,7 +2,7 @@ import unittest
 from graphs import *
 
 
-class MyTestCase(unittest.TestCase):
+class TestGraphs(unittest.TestCase):
 
     def setUp(self):
         self.edges = [(1, 2), (5, 2), (6, 1), (8, 5), (11, 4), (7, 4)]
