@@ -142,7 +142,7 @@ def view_shortest(G, source, target, cost=lambda u, v: 1):
     print(path)
     colormap = {str(v): 'orange' for v in path}
     print(colormap)
-    visualize(G, view='view', nodecolors=colormap)
+    visualize(G, view='dot', nodecolors=colormap)
 
 
 def demo():

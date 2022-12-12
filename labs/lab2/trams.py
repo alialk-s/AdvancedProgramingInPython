@@ -112,7 +112,6 @@ class TramNetwork(WeightedGraph):
         return res_dict
 
 
-
     def stop_lines(self, stop):
         return self.__stopdict[stop].get_lines()
 
@@ -121,7 +120,6 @@ class TramNetwork(WeightedGraph):
 
     def transition_time(self, a, b):
         return self.get_weight(a, b)
-
 
 
 def readTramNetwork(tramfile=TRAM_FILE):
