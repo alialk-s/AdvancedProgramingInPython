@@ -142,7 +142,7 @@
 <g id="node8" class="node">
 <title>Redbergsplatsen</title>
 <g id="a_node8"><a ns0:href="https://www.google.com/search?q=Gothenburg+Redbergsplatsen" ns0:title="Redbergsplatsen" href="https://www.google.com/search?q=Gothenburg+Redbergsplatsen" title="Redbergsplatsen">
-<polygon fill="green" stroke="black" points="925.48,-544.86 856.48,-544.86 856.48,-527.86 925.48,-527.86 925.48,-544.86" />
+<polygon fill="white" stroke="black" points="925.48,-544.86 856.48,-544.86 856.48,-527.86 925.48,-527.86 925.48,-544.86" />
 <text text-anchor="middle" x="890.98" y="-534.46" font-family="Times,serif" font-size="8.00">Redbergsplatsen</text>
 </a>
 </g>
@@ -161,7 +161,7 @@
 <g id="node9" class="node">
 <title>Olskrokstorget</title>
 <g id="a_node9"><a ns0:href="https://www.google.com/search?q=Gothenburg+Olskrokstorget" ns0:title="Olskrokstorget" href="https://www.google.com/search?q=Gothenburg+Olskrokstorget" title="Olskrokstorget">
-<polygon fill="green" stroke="black" points="856.42,-519.86 792.42,-519.86 792.42,-502.86 856.42,-502.86 856.42,-519.86" />
+<polygon fill="white" stroke="black" points="856.42,-519.86 792.42,-519.86 792.42,-502.86 856.42,-502.86 856.42,-519.86" />
 <text text-anchor="middle" x="824.42" y="-509.46" font-family="Times,serif" font-size="8.00">Olskrokstorget</text>
 </a>
 </g>
@@ -190,7 +190,7 @@
 <g id="node10" class="node">
 <title>Svingeln</title>
 <g id="a_node10"><a ns0:href="https://www.google.com/search?q=Gothenburg+Svingeln" ns0:title="Svingeln" href="https://www.google.com/search?q=Gothenburg+Svingeln" title="Svingeln">
-<polygon fill="green" stroke="black" points="784.38,-511.53 739.38,-511.53 739.38,-494.53 784.38,-494.53 784.38,-511.53" />
+<polygon fill="white" stroke="black" points="784.38,-511.53 739.38,-511.53 739.38,-494.53 784.38,-494.53 784.38,-511.53" />
 <text text-anchor="middle" x="761.88" y="-501.13" font-family="Times,serif" font-size="8.00">Svingeln</text>
 </a>
 </g>
@@ -219,7 +219,7 @@
 <g id="node11" class="node">
 <title>Ullevi Norra</title>
 <g id="a_node11"><a ns0:href="https://www.google.com/search?q=Gothenburg+Ullevi+Norra" ns0:title="Ullevi Norra" href="https://www.google.com/search?q=Gothenburg+Ullevi+Norra" title="Ullevi Norra">
-<polygon fill="green" stroke="black" points="877.09,-494.3 820.09,-494.3 820.09,-477.3 877.09,-477.3 877.09,-494.3" />
+<polygon fill="white" stroke="black" points="877.09,-494.3 820.09,-494.3 820.09,-477.3 877.09,-477.3 877.09,-494.3" />
 <text text-anchor="middle" x="848.59" y="-483.9" font-family="Times,serif" font-size="8.00">Ullevi Norra</text>
 </a>
 </g>
@@ -248,7 +248,7 @@
 <g id="node12" class="node">
 <title>Centralstationen</title>
 <g id="a_node12"><a ns0:href="https://www.google.com/search?q=Gothenburg+Centralstationen" ns0:title="Centralstationen" href="https://www.google.com/search?q=Gothenburg+Centralstationen" title="Centralstationen">
-<polygon fill="orange" stroke="black" points="777.99,-486.53 708.99,-486.53 708.99,-469.53 777.99,-469.53 777.99,-486.53" />
+<polygon fill="cyan" stroke="black" points="777.99,-486.53 708.99,-486.53 708.99,-469.53 777.99,-469.53 777.99,-486.53" />
 <text text-anchor="middle" x="743.49" y="-476.13" font-family="Times,serif" font-size="8.00">Centralstationen</text>
 </a>
 </g>
@@ -262,7 +262,7 @@
 <g id="node42" class="node">
 <title>Ullevi S&#246;dra</title>
 <g id="a_node42"><a ns0:href="https://www.google.com/search?q=Gothenburg+Ullevi+S%C3%B6dra" ns0:title="Ullevi S&#246;dra" href="https://www.google.com/search?q=Gothenburg+Ullevi+S%C3%B6dra" title="Ullevi S&#246;dra">
-<polygon fill="green" stroke="black" points="853.38,-462.68 796.38,-462.68 796.38,-445.68 853.38,-445.68 853.38,-462.68" />
+<polygon fill="white" stroke="black" points="853.38,-462.68 796.38,-462.68 796.38,-445.68 853.38,-445.68 853.38,-462.68" />
 <text text-anchor="middle" x="824.88" y="-452.28" font-family="Times,serif" font-size="8.00">Ullevi S&#246;dra</text>
 </a>
 </g>
@@ -286,7 +286,7 @@
 <g id="node13" class="node">
 <title>Brunnsparken</title>
 <g id="a_node13"><a ns0:href="https://www.google.com/search?q=Gothenburg+Brunnsparken" ns0:title="Brunnsparken" href="https://www.google.com/search?q=Gothenburg+Brunnsparken" title="Brunnsparken">
-<polygon fill="orange" stroke="black" points="700.98,-488.07 639.98,-488.07 639.98,-471.07 700.98,-471.07 700.98,-488.07" />
+<polygon fill="cyan" stroke="black" points="700.98,-488.07 639.98,-488.07 639.98,-471.07 700.98,-471.07 700.98,-488.07" />
 <text text-anchor="middle" x="670.48" y="-477.67" font-family="Times,serif" font-size="8.00">Brunnsparken</text>
 </a>
 </g>
@@ -368,7 +368,7 @@
 <g id="node14" class="node">
 <title>Stenpiren</title>
 <g id="a_node14"><a ns0:href="https://www.google.com/search?q=Gothenburg+Stenpiren" ns0:title="Stenpiren" href="https://www.google.com/search?q=Gothenburg+Stenpiren" title="Stenpiren">
-<polygon fill="white" stroke="black" points="569.04,-489.11 522.04,-489.11 522.04,-472.11 569.04,-472.11 569.04,-489.11" />
+<polygon fill="green" stroke="black" points="569.04,-489.11 522.04,-489.11 522.04,-472.11 569.04,-472.11 569.04,-489.11" />
 <text text-anchor="middle" x="545.54" y="-478.71" font-family="Times,serif" font-size="8.00">Stenpiren</text>
 </a>
 </g>
@@ -387,7 +387,7 @@
 <g id="node43" class="node">
 <title>Domkyrkan</title>
 <g id="a_node43"><a ns0:href="https://www.google.com/search?q=Gothenburg+Domkyrkan" ns0:title="Domkyrkan" href="https://www.google.com/search?q=Gothenburg+Domkyrkan" title="Domkyrkan">
-<polygon fill="white" stroke="black" points="631.72,-463.74 576.72,-463.74 576.72,-446.74 631.72,-446.74 631.72,-463.74" />
+<polygon fill="orange" stroke="black" points="631.72,-463.74 576.72,-463.74 576.72,-446.74 631.72,-446.74 631.72,-463.74" />
 <text text-anchor="middle" x="604.22" y="-453.34" font-family="Times,serif" font-size="8.00">Domkyrkan</text>
 </a>
 </g>
@@ -401,7 +401,7 @@
 <g id="node64" class="node">
 <title>Kungsportsplatsen</title>
 <g id="a_node64"><a ns0:href="https://www.google.com/search?q=Gothenburg+Kungsportsplatsen" ns0:title="Kungsportsplatsen" href="https://www.google.com/search?q=Gothenburg+Kungsportsplatsen" title="Kungsportsplatsen">
-<polygon fill="orange" stroke="black" points="759.9,-461.53 683.9,-461.53 683.9,-444.53 759.9,-444.53 759.9,-461.53" />
+<polygon fill="white" stroke="black" points="759.9,-461.53 683.9,-461.53 683.9,-444.53 759.9,-444.53 759.9,-461.53" />
 <text text-anchor="middle" x="721.9" y="-451.13" font-family="Times,serif" font-size="8.00">Kungsportsplatsen</text>
 </a>
 </g>
@@ -434,7 +434,7 @@
 <g id="node15" class="node">
 <title>J&#228;rntorget</title>
 <g id="a_node15"><a ns0:href="https://www.google.com/search?q=Gothenburg+J%C3%A4rntorget" ns0:title="J&#228;rntorget" href="https://www.google.com/search?q=Gothenburg+J%C3%A4rntorget" title="J&#228;rntorget">
-<polygon fill="white" stroke="black" points="557.82,-424.34 509.82,-424.34 509.82,-407.34 557.82,-407.34 557.82,-424.34" />
+<polygon fill="cyan" stroke="black" points="557.82,-424.34 509.82,-424.34 509.82,-407.34 557.82,-407.34 557.82,-424.34" />
 <text text-anchor="middle" x="533.82" y="-413.94" font-family="Times,serif" font-size="8.00">J&#228;rntorget</text>
 </a>
 </g>
@@ -467,7 +467,7 @@
 <g id="node61" class="node">
 <title>Masthuggstorget</title>
 <g id="a_node61"><a ns0:href="https://www.google.com/search?q=Gothenburg+Masthuggstorget" ns0:title="Masthuggstorget" href="https://www.google.com/search?q=Gothenburg+Masthuggstorget" title="Masthuggstorget">
-<polygon fill="white" stroke="black" points="501.78,-434.37 431.78,-434.37 431.78,-417.37 501.78,-417.37 501.78,-434.37" />
+<polygon fill="cyan" stroke="black" points="501.78,-434.37 431.78,-434.37 431.78,-417.37 501.78,-417.37 501.78,-434.37" />
 <text text-anchor="middle" x="466.78" y="-423.97" font-family="Times,serif" font-size="8.00">Masthuggstorget</text>
 </a>
 </g>
@@ -481,7 +481,7 @@
 <g id="node62" class="node">
 <title>Hagakyrkan</title>
 <g id="a_node62"><a ns0:href="https://www.google.com/search?q=Gothenburg+Hagakyrkan" ns0:title="Hagakyrkan" href="https://www.google.com/search?q=Gothenburg+Hagakyrkan" title="Hagakyrkan">
-<polygon fill="white" stroke="black" points="621.88,-407.15 565.88,-407.15 565.88,-390.15 621.88,-390.15 621.88,-407.15" />
+<polygon fill="orange" stroke="black" points="621.88,-407.15 565.88,-407.15 565.88,-390.15 621.88,-390.15 621.88,-407.15" />
 <text text-anchor="middle" x="593.88" y="-396.75" font-family="Times,serif" font-size="8.00">Hagakyrkan</text>
 </a>
 </g>
@@ -1020,7 +1020,7 @@
 <g id="node40" class="node">
 <title>Korsv&#228;gen</title>
 <g id="a_node40"><a ns0:href="https://www.google.com/search?q=Gothenburg+Korsv%C3%A4gen" ns0:title="Korsv&#228;gen" href="https://www.google.com/search?q=Gothenburg+Korsv%C3%A4gen" title="Korsv&#228;gen">
-<polygon fill="green" stroke="black" points="864.56,-374.2 813.56,-374.2 813.56,-357.2 864.56,-357.2 864.56,-374.2" />
+<polygon fill="white" stroke="black" points="864.56,-374.2 813.56,-374.2 813.56,-357.2 864.56,-357.2 864.56,-374.2" />
 <text text-anchor="middle" x="839.06" y="-363.8" font-family="Times,serif" font-size="8.00">Korsv&#228;gen</text>
 </a>
 </g>
@@ -1039,7 +1039,7 @@
 <g id="node41" class="node">
 <title>Scandinavium</title>
 <g id="a_node41"><a ns0:href="https://www.google.com/search?q=Gothenburg+Scandinavium" ns0:title="Scandinavium" href="https://www.google.com/search?q=Gothenburg+Scandinavium" title="Scandinavium">
-<polygon fill="green" stroke="black" points="874.39,-427.15 812.39,-427.15 812.39,-410.15 874.39,-410.15 874.39,-427.15" />
+<polygon fill="white" stroke="black" points="874.39,-427.15 812.39,-427.15 812.39,-410.15 874.39,-410.15 874.39,-427.15" />
 <text text-anchor="middle" x="843.39" y="-416.75" font-family="Times,serif" font-size="8.00">Scandinavium</text>
 </a>
 </g>
@@ -1077,7 +1077,7 @@
 <g id="node107" class="node">
 <title>Chalmers</title>
 <g id="a_node107"><a ns0:href="https://www.google.com/search?q=Gothenburg+Chalmers" ns0:title="Chalmers" href="https://www.google.com/search?q=Gothenburg+Chalmers" title="Chalmers">
-<polygon fill="cyan" stroke="black" points="819.28,-327.42 772.28,-327.42 772.28,-310.42 819.28,-310.42 819.28,-327.42" />
+<polygon fill="white" stroke="black" points="819.28,-327.42 772.28,-327.42 772.28,-310.42 819.28,-310.42 819.28,-327.42" />
 <text text-anchor="middle" x="795.78" y="-317.02" font-family="Times,serif" font-size="8.00">Chalmers</text>
 </a>
 </g>
@@ -1146,7 +1146,7 @@
 <g id="node44" class="node">
 <title>Gr&#246;nsakstorget</title>
 <g id="a_node44"><a ns0:href="https://www.google.com/search?q=Gothenburg+Gr%C3%B6nsakstorget" ns0:title="Gr&#246;nsakstorget" href="https://www.google.com/search?q=Gothenburg+Gr%C3%B6nsakstorget" title="Gr&#246;nsakstorget">
-<polygon fill="white" stroke="black" points="640.24,-438.71 575.24,-438.71 575.24,-421.71 640.24,-421.71 640.24,-438.71" />
+<polygon fill="orange" stroke="black" points="640.24,-438.71 575.24,-438.71 575.24,-421.71 640.24,-421.71 640.24,-438.71" />
 <text text-anchor="middle" x="607.74" y="-428.31" font-family="Times,serif" font-size="8.00">Gr&#246;nsakstorget</text>
 </a>
 </g>
@@ -1170,7 +1170,7 @@
 <g id="node45" class="node">
 <title>Vasaplatsen</title>
 <g id="a_node45"><a ns0:href="https://www.google.com/search?q=Gothenburg+Vasaplatsen" ns0:title="Vasaplatsen" href="https://www.google.com/search?q=Gothenburg+Vasaplatsen" title="Vasaplatsen">
-<polygon fill="orange" stroke="black" points="769.2,-411.5 715.2,-411.5 715.2,-394.5 769.2,-394.5 769.2,-411.5" />
+<polygon fill="white" stroke="black" points="769.2,-411.5 715.2,-411.5 715.2,-394.5 769.2,-394.5 769.2,-411.5" />
 <text text-anchor="middle" x="742.2" y="-401.1" font-family="Times,serif" font-size="8.00">Vasaplatsen</text>
 </a>
 </g>
@@ -1198,7 +1198,7 @@
 <g id="node63" class="node">
 <title>Valand</title>
 <g id="a_node63"><a ns0:href="https://www.google.com/search?q=Gothenburg+Valand" ns0:title="Valand" href="https://www.google.com/search?q=Gothenburg+Valand" title="Valand">
-<polygon fill="orange" stroke="black" points="799.21,-436.51 760.21,-436.51 760.21,-419.51 799.21,-419.51 799.21,-436.51" />
+<polygon fill="white" stroke="black" points="799.21,-436.51 760.21,-436.51 760.21,-419.51 799.21,-419.51 799.21,-436.51" />
 <text text-anchor="middle" x="779.71" y="-426.11" font-family="Times,serif" font-size="8.00">Valand</text>
 </a>
 </g>
@@ -1217,7 +1217,7 @@
 <g id="node117" class="node">
 <title>Kapellplatsen</title>
 <g id="a_node117"><a ns0:href="https://www.google.com/search?q=Gothenburg+Kapellplatsen" ns0:title="Kapellplatsen" href="https://www.google.com/search?q=Gothenburg+Kapellplatsen" title="Kapellplatsen">
-<polygon fill="orange" stroke="black" points="803.25,-352.49 743.25,-352.49 743.25,-335.49 803.25,-335.49 803.25,-352.49" />
+<polygon fill="white" stroke="black" points="803.25,-352.49 743.25,-352.49 743.25,-335.49 803.25,-335.49 803.25,-352.49" />
 <text text-anchor="middle" x="773.25" y="-342.09" font-family="Times,serif" font-size="8.00">Kapellplatsen</text>
 </a>
 </g>
@@ -1311,7 +1311,7 @@
 <g id="node53" class="node">
 <title>Godhemsgatan</title>
 <g id="a_node53"><a ns0:href="https://www.google.com/search?q=Gothenburg+Godhemsgatan" ns0:title="Godhemsgatan" href="https://www.google.com/search?q=Gothenburg+Godhemsgatan" title="Godhemsgatan">
-<polygon fill="white" stroke="black" points="528.94,-306.55 464.94,-306.55 464.94,-289.55 528.94,-289.55 528.94,-306.55" />
+<polygon fill="orange" stroke="black" points="528.94,-306.55 464.94,-306.55 464.94,-289.55 528.94,-289.55 528.94,-306.55" />
 <text text-anchor="middle" x="496.94" y="-296.15" font-family="Times,serif" font-size="8.00">Godhemsgatan</text>
 </a>
 </g>
@@ -1325,7 +1325,7 @@
 <g id="node54" class="node">
 <title>Mariaplan</title>
 <g id="a_node54"><a ns0:href="https://www.google.com/search?q=Gothenburg+Mariaplan" ns0:title="Mariaplan" href="https://www.google.com/search?q=Gothenburg+Mariaplan" title="Mariaplan">
-<polygon fill="white" stroke="black" points="463.68,-334.48 414.68,-334.48 414.68,-317.48 463.68,-317.48 463.68,-334.48" />
+<polygon fill="orange" stroke="black" points="463.68,-334.48 414.68,-334.48 414.68,-317.48 463.68,-317.48 463.68,-334.48" />
 <text text-anchor="middle" x="439.18" y="-324.08" font-family="Times,serif" font-size="8.00">Mariaplan</text>
 </a>
 </g>
@@ -1339,7 +1339,7 @@
 <g id="node131" class="node">
 <title>Ekedal</title>
 <g id="a_node131"><a ns0:href="https://www.google.com/search?q=Gothenburg+Ekedal" ns0:title="Ekedal" href="https://www.google.com/search?q=Gothenburg+Ekedal" title="Ekedal">
-<polygon fill="white" stroke="black" points="530.24,-333.58 491.24,-333.58 491.24,-316.58 530.24,-316.58 530.24,-333.58" />
+<polygon fill="orange" stroke="black" points="530.24,-333.58 491.24,-333.58 491.24,-316.58 530.24,-316.58 530.24,-333.58" />
 <text text-anchor="middle" x="510.74" y="-323.18" font-family="Times,serif" font-size="8.00">Ekedal</text>
 </a>
 </g>
@@ -1363,7 +1363,7 @@
 <g id="node55" class="node">
 <title>Ostindiegatan</title>
 <g id="a_node55"><a ns0:href="https://www.google.com/search?q=Gothenburg+Ostindiegatan" ns0:title="Ostindiegatan" href="https://www.google.com/search?q=Gothenburg+Ostindiegatan" title="Ostindiegatan">
-<polygon fill="white" stroke="black" points="395.9,-334.5 334.9,-334.5 334.9,-317.5 395.9,-317.5 395.9,-334.5" />
+<polygon fill="green" stroke="black" points="395.9,-334.5 334.9,-334.5 334.9,-317.5 395.9,-317.5 395.9,-334.5" />
 <text text-anchor="middle" x="365.4" y="-324.1" font-family="Times,serif" font-size="8.00">Ostindiegatan</text>
 </a>
 </g>
@@ -1377,7 +1377,7 @@
 <g id="node56" class="node">
 <title>Vagnhallen Majorna</title>
 <g id="a_node56"><a ns0:href="https://www.google.com/search?q=Gothenburg+Vagnhallen+Majorna" ns0:title="Vagnhallen Majorna" href="https://www.google.com/search?q=Gothenburg+Vagnhallen+Majorna" title="Vagnhallen Majorna">
-<polygon fill="white" stroke="black" points="326.85,-357.48 244.85,-357.48 244.85,-340.48 326.85,-340.48 326.85,-357.48" />
+<polygon fill="green" stroke="black" points="326.85,-357.48 244.85,-357.48 244.85,-340.48 326.85,-340.48 326.85,-357.48" />
 <text text-anchor="middle" x="285.85" y="-347.08" font-family="Times,serif" font-size="8.00">Vagnhallen Majorna</text>
 </a>
 </g>
@@ -1391,7 +1391,7 @@
 <g id="node118" class="node">
 <title>Sannaplan</title>
 <g id="a_node118"><a ns0:href="https://www.google.com/search?q=Gothenburg+Sannaplan" ns0:title="Sannaplan" href="https://www.google.com/search?q=Gothenburg+Sannaplan" title="Sannaplan">
-<polygon fill="white" stroke="black" points="445.74,-309.48 395.74,-309.48 395.74,-292.48 445.74,-292.48 445.74,-309.48" />
+<polygon fill="cyan" stroke="black" points="445.74,-309.48 395.74,-309.48 395.74,-292.48 445.74,-292.48 445.74,-309.48" />
 <text text-anchor="middle" x="420.74" y="-299.08" font-family="Times,serif" font-size="8.00">Sannaplan</text>
 </a>
 </g>
@@ -1410,7 +1410,7 @@
 <g id="node57" class="node">
 <title>Jaegerdorffsplatsen</title>
 <g id="a_node57"><a ns0:href="https://www.google.com/search?q=Gothenburg+Jaegerdorffsplatsen" ns0:title="Jaegerdorffsplatsen" href="https://www.google.com/search?q=Gothenburg+Jaegerdorffsplatsen" title="Jaegerdorffsplatsen">
-<polygon fill="white" stroke="black" points="351.52,-382.48 272.52,-382.48 272.52,-365.48 351.52,-365.48 351.52,-382.48" />
+<polygon fill="green" stroke="black" points="351.52,-382.48 272.52,-382.48 272.52,-365.48 351.52,-365.48 351.52,-382.48" />
 <text text-anchor="middle" x="312.02" y="-372.08" font-family="Times,serif" font-size="8.00">Jaegerdorffsplatsen</text>
 </a>
 </g>
@@ -1429,7 +1429,7 @@
 <g id="node58" class="node">
 <title>Chapmans Torg</title>
 <g id="a_node58"><a ns0:href="https://www.google.com/search?q=Gothenburg+Chapmans+Torg" ns0:title="Chapmans Torg" href="https://www.google.com/search?q=Gothenburg+Chapmans+Torg" title="Chapmans Torg">
-<polygon fill="white" stroke="black" points="365.67,-407.63 298.67,-407.63 298.67,-390.63 365.67,-390.63 365.67,-407.63" />
+<polygon fill="green" stroke="black" points="365.67,-407.63 298.67,-407.63 298.67,-390.63 365.67,-390.63 365.67,-407.63" />
 <text text-anchor="middle" x="332.17" y="-397.23" font-family="Times,serif" font-size="8.00">Chapmans Torg</text>
 </a>
 </g>
@@ -1448,7 +1448,7 @@
 <g id="node59" class="node">
 <title>Kaptensgatan</title>
 <g id="a_node59"><a ns0:href="https://www.google.com/search?q=Gothenburg+Kaptensgatan" ns0:title="Kaptensgatan" href="https://www.google.com/search?q=Gothenburg+Kaptensgatan" title="Kaptensgatan">
-<polygon fill="white" stroke="black" points="407.66,-434.04 347.66,-434.04 347.66,-417.04 407.66,-417.04 407.66,-434.04" />
+<polygon fill="green" stroke="black" points="407.66,-434.04 347.66,-434.04 347.66,-417.04 407.66,-417.04 407.66,-434.04" />
 <text text-anchor="middle" x="377.66" y="-423.64" font-family="Times,serif" font-size="8.00">Kaptensgatan</text>
 </a>
 </g>
@@ -1467,7 +1467,7 @@
 <g id="node60" class="node">
 <title>Stigbergstorget</title>
 <g id="a_node60"><a ns0:href="https://www.google.com/search?q=Gothenburg+Stigbergstorget" ns0:title="Stigbergstorget" href="https://www.google.com/search?q=Gothenburg+Stigbergstorget" title="Stigbergstorget">
-<polygon fill="white" stroke="black" points="465.24,-459.39 400.24,-459.39 400.24,-442.39 465.24,-442.39 465.24,-459.39" />
+<polygon fill="cyan" stroke="black" points="465.24,-459.39 400.24,-459.39 400.24,-442.39 465.24,-442.39 465.24,-459.39" />
 <text text-anchor="middle" x="432.74" y="-448.99" font-family="Times,serif" font-size="8.00">Stigbergstorget</text>
 </a>
 </g>
@@ -1676,7 +1676,7 @@
 <g id="node106" class="node">
 <title>Ejdergatan</title>
 <g id="a_node106"><a ns0:href="https://www.google.com/search?q=Gothenburg+Ejdergatan" ns0:title="Ejdergatan" href="https://www.google.com/search?q=Gothenburg+Ejdergatan" title="Ejdergatan">
-<polygon fill="green" stroke="black" points="955.93,-569.86 904.93,-569.86 904.93,-552.86 955.93,-552.86 955.93,-569.86" />
+<polygon fill="white" stroke="black" points="955.93,-569.86 904.93,-569.86 904.93,-552.86 955.93,-552.86 955.93,-569.86" />
 <text text-anchor="middle" x="930.43" y="-559.46" font-family="Times,serif" font-size="8.00">Ejdergatan</text>
 </a>
 </g>
@@ -2641,7 +2641,7 @@
 <g id="node119" class="node">
 <title>Sandarna</title>
 <g id="a_node119"><a ns0:href="https://www.google.com/search?q=Gothenburg+Sandarna" ns0:title="Sandarna" href="https://www.google.com/search?q=Gothenburg+Sandarna" title="Sandarna">
-<polygon fill="white" stroke="black" points="387.7,-296.15 341.7,-296.15 341.7,-279.15 387.7,-279.15 387.7,-296.15" />
+<polygon fill="cyan" stroke="black" points="387.7,-296.15 341.7,-296.15 341.7,-279.15 387.7,-279.15 387.7,-296.15" />
 <text text-anchor="middle" x="364.7" y="-285.75" font-family="Times,serif" font-size="8.00">Sandarna</text>
 </a>
 </g>
@@ -2665,7 +2665,7 @@
 <g id="node120" class="node">
 <title>Kungssten</title>
 <g id="a_node120"><a ns0:href="https://www.google.com/search?q=Gothenburg+Kungssten" ns0:title="Kungssten" href="https://www.google.com/search?q=Gothenburg+Kungssten" title="Kungssten">
-<polygon fill="white" stroke="black" points="337.17,-271.14 287.17,-271.14 287.17,-254.14 337.17,-254.14 337.17,-271.14" />
+<polygon fill="cyan" stroke="black" points="337.17,-271.14 287.17,-271.14 287.17,-254.14 337.17,-254.14 337.17,-271.14" />
 <text text-anchor="middle" x="312.17" y="-260.74" font-family="Times,serif" font-size="8.00">Kungssten</text>
 </a>
 </g>
@@ -2764,7 +2764,7 @@
 <g id="node126" class="node">
 <title>Hinsholmen</title>
 <g id="a_node126"><a ns0:href="https://www.google.com/search?q=Gothenburg+Hinsholmen" ns0:title="Hinsholmen" href="https://www.google.com/search?q=Gothenburg+Hinsholmen" title="Hinsholmen">
-<polygon fill="white" stroke="black" points="132.55,-163.29 76.55,-163.29 76.55,-146.29 132.55,-146.29 132.55,-163.29" />
+<polygon fill="cyan" stroke="black" points="132.55,-163.29 76.55,-163.29 76.55,-146.29 132.55,-146.29 132.55,-163.29" />
 <text text-anchor="middle" x="104.55" y="-152.89" font-family="Times,serif" font-size="8.00">Hinsholmen</text>
 </a>
 </g>
@@ -2783,7 +2783,7 @@
 <g id="node127" class="node">
 <title>K&#228;ringberget</title>
 <g id="a_node127"><a ns0:href="https://www.google.com/search?q=Gothenburg+K%C3%A4ringberget" ns0:title="K&#228;ringberget" href="https://www.google.com/search?q=Gothenburg+K%C3%A4ringberget" title="K&#228;ringberget">
-<polygon fill="white" stroke="black" points="199.58,-171.1 140.58,-171.1 140.58,-154.1 199.58,-154.1 199.58,-171.1" />
+<polygon fill="cyan" stroke="black" points="199.58,-171.1 140.58,-171.1 140.58,-154.1 199.58,-154.1 199.58,-171.1" />
 <text text-anchor="middle" x="170.08" y="-160.7" font-family="Times,serif" font-size="8.00">K&#228;ringberget</text>
 </a>
 </g>
@@ -2802,7 +2802,7 @@
 <g id="node128" class="node">
 <title>Tranered</title>
 <g id="a_node128"><a ns0:href="https://www.google.com/search?q=Gothenburg+Tranered" ns0:title="Tranered" href="https://www.google.com/search?q=Gothenburg+Tranered" title="Tranered">
-<polygon fill="white" stroke="black" points="234.42,-196.11 189.42,-196.11 189.42,-179.11 234.42,-179.11 234.42,-196.11" />
+<polygon fill="cyan" stroke="black" points="234.42,-196.11 189.42,-196.11 189.42,-179.11 234.42,-179.11 234.42,-196.11" />
 <text text-anchor="middle" x="211.92" y="-185.71" font-family="Times,serif" font-size="8.00">Tranered</text>
 </a>
 </g>
@@ -2821,7 +2821,7 @@
 <g id="node129" class="node">
 <title>Hagen</title>
 <g id="a_node129"><a ns0:href="https://www.google.com/search?q=Gothenburg+Hagen" ns0:title="Hagen" href="https://www.google.com/search?q=Gothenburg+Hagen" title="Hagen">
-<polygon fill="white" stroke="black" points="256.56,-221.13 219.56,-221.13 219.56,-204.13 256.56,-204.13 256.56,-221.13" />
+<polygon fill="cyan" stroke="black" points="256.56,-221.13 219.56,-221.13 219.56,-204.13 256.56,-204.13 256.56,-221.13" />
 <text text-anchor="middle" x="238.06" y="-210.73" font-family="Times,serif" font-size="8.00">Hagen</text>
 </a>
 </g>
@@ -2840,7 +2840,7 @@
 <g id="node130" class="node">
 <title>Nya Varvsall&#233;n</title>
 <g id="a_node130"><a ns0:href="https://www.google.com/search?q=Gothenburg+Nya+Varvsall%C3%A9n" ns0:title="Nya Varvsall&#233;n" href="https://www.google.com/search?q=Gothenburg+Nya+Varvsall%C3%A9n" title="Nya Varvsall&#233;n">
-<polygon fill="white" stroke="black" points="312.27,-246.13 247.27,-246.13 247.27,-229.13 312.27,-229.13 312.27,-246.13" />
+<polygon fill="cyan" stroke="black" points="312.27,-246.13 247.27,-246.13 247.27,-229.13 312.27,-229.13 312.27,-246.13" />
 <text text-anchor="middle" x="279.77" y="-235.73" font-family="Times,serif" font-size="8.00">Nya Varvsall&#233;n</text>
 </a>
 </g>
@@ -2869,7 +2869,7 @@
 <g id="node132" class="node">
 <title>Majvallen</title>
 <g id="a_node132"><a ns0:href="https://www.google.com/search?q=Gothenburg+Majvallen" ns0:title="Majvallen" href="https://www.google.com/search?q=Gothenburg+Majvallen" title="Majvallen">
-<polygon fill="white" stroke="black" points="558.86,-358.6 509.86,-358.6 509.86,-341.6 558.86,-341.6 558.86,-358.6" />
+<polygon fill="orange" stroke="black" points="558.86,-358.6 509.86,-358.6 509.86,-341.6 558.86,-341.6 558.86,-358.6" />
 <text text-anchor="middle" x="534.36" y="-348.2" font-family="Times,serif" font-size="8.00">Majvallen</text>
 </a>
 </g>
@@ -2883,7 +2883,7 @@
 <g id="node133" class="node">
 <title>Fj&#228;llgatan</title>
 <g id="a_node133"><a ns0:href="https://www.google.com/search?q=Gothenburg+Fj%C3%A4llgatan" ns0:title="Fj&#228;llgatan" href="https://www.google.com/search?q=Gothenburg+Fj%C3%A4llgatan" title="Fj&#228;llgatan">
-<polygon fill="white" stroke="black" points="499.81,-387.27 451.81,-387.27 451.81,-370.27 499.81,-370.27 499.81,-387.27" />
+<polygon fill="orange" stroke="black" points="499.81,-387.27 451.81,-387.27 451.81,-370.27 499.81,-370.27 499.81,-387.27" />
 <text text-anchor="middle" x="475.81" y="-376.87" font-family="Times,serif" font-size="8.00">Fj&#228;llgatan</text>
 </a>
 </g>
