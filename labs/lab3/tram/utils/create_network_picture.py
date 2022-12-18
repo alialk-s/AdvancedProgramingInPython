@@ -17,10 +17,10 @@ import re
 
 MY_GBG_SVG = 'gbg_tramnet.svg'  # the output SVG file
 MY_TRAMNETWORK_JSON = 'tramnetwork.json'  # JSON file from lab1
-TRAM_URL_FILE = 'tram_stops_urls.json'  # given in lab3/files, replace with your own in bonus 2
+TRAM_URL_FILE = '../../static/tram_stops_urls.json'  # given in lab3/files, replace with your own in bonus 2
 VASTTRAFIK_URL = 'https://www.vasttrafik.se/reseplanering/hallplatslista/'
 ANSLAG_TAVLA = 'https://avgangstavla.vasttrafik.se/?source=vasttrafikse-stopareadetailspage&stopAreaGid='
-doc = BeautifulSoup(requests.get(VASTTRAFIK_URL).text, 'html.parser')
+DOC = BeautifulSoup(requests.get(VASTTRAFIK_URL).text, 'html.parser')
 
 
 # assign colors to lines, indexed by line number; not quite accurate
@@ -33,7 +33,7 @@ gbg_linecolors = {
 # compute the scale of the map; you may want to test different heuristics to make map look better
 def scaled_position(network):
     positions = network.extreme_positions()
-    minlat, minlon, maxlat, maxlon = positions['min_lat'],positions['min_lon'],positions['max_lat'],positions['max_lon'],
+    minlat, minlon, maxlat, maxlon = positions['min_lat'], positions['min_lon'], positions['max_lat'], positions['max_lon']
     size_x = maxlon - minlon
     scalefactor = len(network) / 4  # heuristic
     x_factor = scalefactor / size_x
@@ -46,7 +46,7 @@ def scaled_position(network):
 # Bonus task 2: create a json file that returns the actual traffic information, and rerun the map creation
 def get_stop_gid(stop):
     # get html part associated with this stop
-    stop_html = doc.find(text=re.compile(stop)).parent
+    stop_html = DOC.find(text=re.compile(stop)).parent
     # get the href out of it
     stop_href = stop_html['href']
     # finally, substring href to get the gid
@@ -120,6 +120,7 @@ if __name__ == '__main__':
     run_json(TRAM_URL_FILE)
     network = readTramNetwork(tramfile=MY_TRAMNETWORK_JSON)
     network_graphviz(network)
+    #print(stop_url('Chalmers'))
 
 """
 # this is how the url json file was created

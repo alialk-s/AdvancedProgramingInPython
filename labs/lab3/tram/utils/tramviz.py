@@ -3,15 +3,6 @@ from .graphs import dijkstra
 from .color_tram_svg import color_svg_network
 from django.conf import settings
 
-# baseline tram visualization for Lab 3
-# creates by default an SVG image usable on the home page
-# this image can then be coloured by using tramviz.py, which operates directly on the SVG file
-# you don't need to use this file unless you want to use your own gbg_tramnet.svg
-# this will be needed in Bonus task 2, where you change the URLs of vertices
-# but you should only do this once, not every time you display a route
-# rename the resulting file to gbg_tramnet.svg when you have your final version
-
-
 
 def show_shortest(dep, dest):
     network = readTramNetwork()
@@ -38,8 +29,8 @@ def show_shortest(dep, dest):
         else:
             return 'white'
 
-    timepath = 'The quickest route from ' + dep + ' to ' + dest + ': ' + str(quickest)
-    geopath = 'The shortest route from ' + dep + ' to ' + dest + ': ' + str(shortest)
+    timepath = 'Quickest: ' + str(quickest)
+    geopath = 'Shortest: ' + str(shortest)
 
     color_svg_network(colormap=colors)
 
