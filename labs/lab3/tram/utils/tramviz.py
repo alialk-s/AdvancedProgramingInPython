@@ -1,7 +1,6 @@
 from .trams import readTramNetwork, get_path_cost, specialize_stops_to_lines, specialized_geo_distance, specialized_transition_time
 from .graphs import dijkstra
 from .color_tram_svg import color_svg_network
-import os
 from django.conf import settings
 
 # baseline tram visualization for Lab 3
@@ -13,11 +12,9 @@ from django.conf import settings
 # rename the resulting file to gbg_tramnet.svg when you have your final version
 
 
-def show_shortest(dep, dest):
-    # TODO: uncomment this when it works with your own code
-    network = readTramNetwork()
 
-    # TODO: replace this mock-up with actual computation using dijkstra.
+def show_shortest(dep, dest):
+    network = readTramNetwork()
     # First you need to calculate the shortest and quickest paths, by using appropriate
     # cost functions in dijkstra().
     # Then you just need to use the lists of stops returned by dijkstra()
@@ -74,35 +71,32 @@ def optimal_path_finder(tramnetwork, dep, dest, geo_dist = False):
     # the cost of the optimal path, initially infinity
     optimal_path_cost = float('inf')
 
-    # loop to know which line in dep to which line in dest are best
+    # loop to know which line in dep is best to take, and which line in dest is best to arrive to
     for dep_node in deps:
         for dest_node in dests:
-            path = dijkstra(spec_tram, dep_node, shortest_type)[dest_node]
-            path_cost = get_path_cost(spec_tram, path, geo_dist)
+            current_path = dijkstra(spec_tram, dep_node, shortest_type)[dest_node]
+            current_path_cost = get_path_cost(spec_tram, current_path, geo_dist)
             # compare the current path with the optimal path
-            if  path_cost < optimal_path_cost:
+            if  current_path_cost < optimal_path_cost:
                 # update optimal path cost
-                optimal_path_cost = path_cost
+                optimal_path_cost = current_path_cost
                 # update optimal path
-                optimal_path = path
+                optimal_path = current_path
 
-            #print(path)
-            #print(get_path_cost(spec_tram, path))
-            #print('\n')
+            print(current_path)
+            print(current_path_cost)
+            print('\n')
 
     return optimal_path
 
 
-#if __name__ == '__main__':
- #   network = readTramNetwork()
-    #network_graphviz(network)
-#
-print("\noptimal path: " + str(optimal_path_finder(readTramNetwork(), 'Friskväderstorget', 'Hinsholmen')))
-#from bs4 import BeautifulSoup
-#import requests
-#import re
+#print("\noptimal path: " + str(optimal_path_finder(readTramNetwork(), 'Chalmers', 'Valand', geo_dist=True)))
 
-#vasttrafik_url = 'https://www.vasttrafik.se/reseplanering/hallplatslista/'
-#doc = BeautifulSoup(requests.get(vasttrafik_url).text, 'html.parser')
+
+
 #print(doc)
-#print(doc.find(text=re.compile('Chalmers')).parent['href'].split('/')[1])
+#for stop in readTramNetwork().all_stops():
+#    print(stop + ': ' + doc.find(text=re.compile(stop)).parent['href'].split('/')[3])
+
+
+

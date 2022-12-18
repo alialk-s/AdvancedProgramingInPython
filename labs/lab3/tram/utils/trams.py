@@ -93,7 +93,7 @@ class TramNetwork(WeightedGraph):
         b_lat = float(self.__stopdict[b].get_position()[0])
         b_lon = float(self.__stopdict[b].get_position()[1])
 
-        return td.distance_between_two_points(a_lat, a_lon, b_lat, b_lon)
+        return (td.distance_between_two_points(a_lat, a_lon, b_lat, b_lon))
 
     def extreme_positions(self):
         res_dict = {'max_lat': 0, 'min_lat': float('inf'), 'max_lon': 0, 'min_lon': float('inf')}
@@ -204,7 +204,7 @@ def get_path_cost(graph, path, geo_distance = False):
         else:
             cost += specialized_transition_time(graph, path[i], path[i+1])
 
-    return cost
+    return cost.__round__(3)
 
 
 
