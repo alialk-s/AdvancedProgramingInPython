@@ -5,7 +5,7 @@ from django.conf import settings
 
 
 # helper function to return the shortest path, based on either distance or time
-def optimal_path_finder(tramnetwork, dep, dest, geo_dist = False):
+def optimal_path_finder(tramnetwork, dep, dest, geo_dist=False):
     spec_tram = specialize_stops_to_lines(tramnetwork)
 
     # all vertices that contain dep
@@ -77,8 +77,8 @@ def show_shortest(dep, dest):
         else:
             return 'white'
 
-    timepath = 'Quickest: ' + ', '.join(quickest_path) + './  ' + str(quickest_cost) + ' km'
-    geopath = 'Shortest: ' + ', '.join(shortest_path) + './  ' + str(shortest_cost) + ' minutes'
+    timepath = 'Quickest: ' + ', '.join(quickest_path) + './  ' + str(quickest_cost) + ' minutes'
+    geopath = 'Shortest: ' + ', '.join(shortest_path) + './  ' + str(shortest_cost) + ' km'
 
     color_svg_network(colormap=colors)
 
@@ -86,7 +86,9 @@ def show_shortest(dep, dest):
 
 
 
-#print("\noptimal path: " + str(optimal_path_finder(readTramNetwork(), 'Chalmers', 'Valand')))
+#print("\noptimal path: " + str(optimal_path_finder(readTramNetwork(), 'Rymdtorget Spårvagn', 'Långedrag')))
+#print("\noptimal path: " + str(optimal_path_finder(readTramNetwork(), 'Rymdtorget Spårvagn', 'Långedrag', geo_dist=True)))
+
 #print("\noptimal path: " + str(optimal_path_finder(readTramNetwork(), 'Chalmers', 'Valand', geo_dist=True)))
 
 
