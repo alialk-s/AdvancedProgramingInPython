@@ -11,6 +11,7 @@ import tramdata as td
 
 TRAM_FILE = os.path.join(settings.BASE_DIR, 'static/tramnetwork.json')
 
+
 class TramStop:
 
     def __init__(self, name, lines=None, lat=None, lon=None):

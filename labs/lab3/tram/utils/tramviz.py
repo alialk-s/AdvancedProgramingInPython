@@ -4,39 +4,6 @@ from .color_tram_svg import color_svg_network
 from django.conf import settings
 
 
-def show_shortest(dep, dest):
-    network = readTramNetwork()
-    # First you need to calculate the shortest and quickest paths, by using appropriate
-    # cost functions in dijkstra().
-    # Then you just need to use the lists of stops returned by dijkstra()
-    #
-    # If you do Bonus 1, you could also tell which tram lines you use and where changes
-    # happen. But since this was not mentioned in lab3.md, it is not compulsory.
-
-    def convert_tram_nodes(optimal_path):
-        return [v[0] for v in optimal_path]
-
-    quickest = convert_tram_nodes(optimal_path_finder(network, dep, dest))
-    shortest = convert_tram_nodes(optimal_path_finder(network, dep, dest, geo_dist=True))
-
-    def colors(v):
-        if v in shortest and v in quickest:
-            return 'cyan'
-        elif v in shortest:
-            return 'green'
-        elif v in quickest:
-            return 'orange'
-        else:
-            return 'white'
-
-    timepath = 'Quickest: ' + str(quickest)
-    geopath = 'Shortest: ' + str(shortest)
-
-    color_svg_network(colormap=colors)
-
-    return timepath, geopath
-
-
 # helper function to return the shortest path, based on either distance or time
 def optimal_path_finder(tramnetwork, dep, dest, geo_dist = False):
     spec_tram = specialize_stops_to_lines(tramnetwork)
@@ -74,20 +41,52 @@ def optimal_path_finder(tramnetwork, dep, dest, geo_dist = False):
                 # update optimal path
                 optimal_path = current_path
 
-            print(current_path)
-            print(current_path_cost)
-            print('\n')
+            #print(current_path)
+            #print(current_path_cost)
+            #print('\n')
 
-    return optimal_path
+    return optimal_path, optimal_path_cost
 
 
+def show_shortest(dep, dest):
+    network = readTramNetwork()
+
+    def convert_tram_nodes(optimal_path):
+        return [v[0] for v in optimal_path]
+
+    # find the quickest
+    quickest = optimal_path_finder(network, dep, dest)
+    # find the shortest
+    shortest = optimal_path_finder(network, dep, dest, geo_dist=True)
+    # get the quickest path description
+    quickest_path = convert_tram_nodes(quickest[0])
+    # get the shortest path description
+    shortest_path = convert_tram_nodes(shortest[0])
+    # get the quickest path cost
+    quickest_cost = quickest[1]
+    # get shortest path cost
+    shortest_cost = shortest[1]
+
+    def colors(v):
+        if v in shortest_path and v in quickest_path:
+            return 'cyan'
+        elif v in shortest_path:
+            return 'green'
+        elif v in quickest_path:
+            return 'orange'
+        else:
+            return 'white'
+
+    timepath = 'Quickest: ' + ', '.join(quickest_path) + './  ' + str(quickest_cost) + ' km'
+    geopath = 'Shortest: ' + ', '.join(shortest_path) + './  ' + str(shortest_cost) + ' minutes'
+
+    color_svg_network(colormap=colors)
+
+    return timepath, geopath
+
+
+
+#print("\noptimal path: " + str(optimal_path_finder(readTramNetwork(), 'Chalmers', 'Valand')))
 #print("\noptimal path: " + str(optimal_path_finder(readTramNetwork(), 'Chalmers', 'Valand', geo_dist=True)))
-
-
-
-#print(doc)
-#for stop in readTramNetwork().all_stops():
-#    print(stop + ': ' + doc.find(text=re.compile(stop)).parent['href'].split('/')[3])
-
 
 

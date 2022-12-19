@@ -86,7 +86,6 @@ def stop_url(stop):
 # You don't probably need to change this, if your TramNetwork class uses the same
 # method names and types and represents positions as ordered pairs.
 # If not, you will need to change the method call to correspond to your class.
-
 def network_graphviz(network, outfile=MY_GBG_SVG, positions=scaled_position):
     dot = graphviz.Graph(engine='fdp', graph_attr={'size': '12,12'})
 
@@ -112,8 +111,9 @@ def network_graphviz(network, outfile=MY_GBG_SVG, positions=scaled_position):
 
     dot.format = 'svg'
     s = dot.pipe().decode('utf-8')
-    with open(outfile, 'w') as file:
+    with open(outfile, 'w', encoding='utf-8') as file:
         file.write(s)
+
 
 
 if __name__ == '__main__':
@@ -133,3 +133,9 @@ if __name__ == '__main__':
     with open(TRAM_URL_FILE, 'w') as file:
         json.dump(dict, file, indent=2, ensure_ascii=False)
 """
+
+#print(doc)
+#for stop in readTramNetwork().all_stops():
+#    print(stop + ': ' + doc.find(text=re.compile(stop)).parent['href'].split('/')[1])
+#    print(stop + ': ' + doc.find(text=re.compile(stop)).parent['href'].split('/')[2])
+#    print(stop + ': ' + doc.find(text=re.compile(stop)).parent['href'].split('/')[3])
