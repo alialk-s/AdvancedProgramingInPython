@@ -192,9 +192,6 @@ def specialized_geo_distance(spec_network, a, b):
 
 
 def specialized_transition_time(spec_network, a, b):
-    #stop1, stop2 = a[0], b[0]
-    #print("stop1: " + stop1 + ", stop2: " + stop2)
-
     return spec_network.get_weight(a, b)
 
 def get_path_cost(graph, path, geo_distance = False):
@@ -213,12 +210,10 @@ def demo():
     G = readTramNetwork()
     a, b = input('from,to ').split(',')
     view_shortest(G, a, b)
-import time
-start_time = time.time()
-if __name__ == '__main__':
-    pass
 
-    #demo() (('Ullevi Södra', '13'), ('Centralstationen', '13'))
+if __name__ == '__main__':
+    demo()
+    #(('Ullevi Södra', '13'), ('Centralstationen', '13'))
     #c = SpecTramNetwork(readTramNetwork())
     #print(len(c.edges()))
     #vertices: 352
