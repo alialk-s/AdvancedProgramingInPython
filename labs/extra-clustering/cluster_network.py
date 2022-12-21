@@ -91,7 +91,7 @@ def mk_routegraph(routeset):
 
     return g
 
-def airports():
+def airports_as_points():
     airports = mk_airportdict()
     points = []
     for a in airports:
@@ -100,10 +100,14 @@ def airports():
         # add them as a single point to the list
         points.append((x, y))
 
+    return points
+
+def airports():
+    points = airports_as_points()
     plt.scatter(*zip(*points), edgecolors='blue', s=0.2)
     plt.show()
 
-def list_of_lines_between_points(graph):
+def edges_as_lines(graph):
     airport_dict = mk_airportdict()
     edges = graph.edges
     lines = []
@@ -116,29 +120,31 @@ def list_of_lines_between_points(graph):
 
     return lines
 
-def plot_lines(lines, pointlines, linewidth, pointsize):
-    lc = LineCollection(lines, colors=['blue', 'gray', 'red', 'green'], linewidths=linewidth)
+def plot_lines(lines, points, linewidth, pointsize):
+    lc = LineCollection(lines, colors=['blue', 'gray', 'red', 'purple', 'green', 'orange',
+                                       'cyan', 'pink'], linewidths=linewidth)
     fig = plt.figure()
     ax1 = fig.add_subplot(1, 1, 1)
+    # add lines to be plotted
     ax1.add_collection(lc)
-    x = [i[0] for j in pointlines for i in j]
-    y = [i[1] for j in pointlines for i in j]
-
+    # store all x coordinates in points in a separate list
+    x = [pair[0] for pair in points]
+    # store all y coordinates in points in separate list
+    y = [pair[1] for pair in points]
+    # add these points
     ax1.scatter(x, y, s=pointsize)
     plt.show()
 
 def routes():
-    start_time = time.time()
-    # get all lines to plot
-    lines = list_of_lines_between_points(mk_routegraph(mk_routeset()))
-    #print("--- %s seconds ---" % (time.time() - start_time))
-    # plot lines
-    plot_lines(lines, lines, 0.15, 0.15)
-
+    # get all lines to be plotted
+    lines = edges_as_lines(mk_routegraph(mk_routeset()))
+    # get all points to be plotted
+    points = airports_as_points()
+    # plot lines and points
+    plot_lines(lines, points, 0.15, 0.15)
 
 
 def k_spanning_tree(G, k=1000):
-    print(G)
     start_time = time.time()
     MST = list(algorithms.tree.mst.minimum_spanning_edges(G))
     weights = [MST[i][2]['weight'] for i in range(len(MST))]
@@ -154,9 +160,10 @@ def k_spanning_tree(G, k=1000):
     # new graph with the remaining edges
     new_G = nx.Graph(MST)
     # get the lines to be plotted
-    lines = list_of_lines_between_points(new_G)
-    # get lines from root graph in order to plot their associated points, i.e all points
-    all_lines = list_of_lines_between_points(G)
-    print(G)
-    # plot these lines
-    plot_lines(lines, all_lines, 0.8, 0.2)
+    lines = edges_as_lines(new_G)
+    # get all points from root graph to be plotted, i.e all airports
+    points = airports_as_points()
+    # plot these lines and points
+    plot_lines(lines, points, 1, 0.1)
+
+k_spanning_tree(mk_routegraph(mk_routeset()))
