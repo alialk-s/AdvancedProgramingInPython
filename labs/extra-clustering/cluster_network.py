@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from haversine import haversine
 from matplotlib.collections import LineCollection
+import time
+
+from networkx import algorithms
 
 AIRPORTS_FILE = 'airports.dat'
 ROUTS_FILE = 'routes.dat'
@@ -37,6 +40,7 @@ def mk_airportdict(aFILE=AIRPORTS_FILE):
                           'type': remove_quotation_marks(temp_list[12]),
                           'source': remove_quotation_marks(temp_list[13])}
             airport_dict[int(temp_list[0])] = value_dict
+        # just skip any line with unstructured data
         except:
             continue
 
@@ -96,10 +100,11 @@ def airports():
         # add them as a single point to the list
         points.append((x, y))
 
-    plt.scatter(*zip(*points), edgecolors='blue', s=0.3)
+    plt.scatter(*zip(*points), edgecolors='blue', s=0.2)
     plt.show()
 
 def routes():
+    start_time = time.time()
     g = mk_routegraph(mk_routeset())
     airport_dict = mk_airportdict()
     edges = g.edges
@@ -111,14 +116,35 @@ def routes():
         point2 = (lon2, lat2)
         lines.append([point1, point2])
 
-    lc = LineCollection(lines, colors=['blue', 'green', 'red', 'yellow', 'gray'], linewidths=0.15)
+    lc = LineCollection(lines, colors=['blue', 'gray', 'red', 'green'], linewidths=0.15)
     fig = plt.figure()
     ax1 = fig.add_subplot(1, 1, 1)
     ax1.add_collection(lc)
     x = [i[0] for j in lines for i in j]
     y = [i[1] for j in lines for i in j]
 
-    ax1.scatter(x, y, s=0.2)
+    ax1.scatter(x, y, s=0.1)
+    print("--- %s seconds ---" % (time.time() - start_time))
+
     plt.show()
 
-airports()
+
+def k_spanning_tree(G, k=1000):
+    start_time = time.time()
+    MST = list(algorithms.tree.mst.minimum_spanning_edges(G))
+    weights = [MST[i][2]['weight'] for i in range(len(MST))]
+
+    for j in range(k - 1):
+        # get index of the the edge with max weight
+        index_max = weights.index(max(weights))
+        # remove that edge from the list
+        del MST[index_max]
+        # remove the weight from weights for updating index_max
+        del weights[index_max]
+
+    # create new graph with the remaining edges
+    new_G = nx.Graph(MST)
+    print("--- %s seconds ---" % (time.time() - start_time))
+
+    return new_G
+
