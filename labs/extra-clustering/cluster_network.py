@@ -103,11 +103,9 @@ def airports():
     plt.scatter(*zip(*points), edgecolors='blue', s=0.2)
     plt.show()
 
-def routes():
-    start_time = time.time()
-    g = mk_routegraph(mk_routeset())
+def list_of_lines_between_points(graph):
     airport_dict = mk_airportdict()
-    edges = g.edges
+    edges = graph.edges
     lines = []
     for pair in edges:
         lat1, lon1 = airport_dict[pair[0]]['lat'], airport_dict[pair[0]]['lon']
@@ -116,20 +114,31 @@ def routes():
         point2 = (lon2, lat2)
         lines.append([point1, point2])
 
-    lc = LineCollection(lines, colors=['blue', 'gray', 'red', 'green'], linewidths=0.15)
+    return lines
+
+def plot_lines(lines, pointlines, linewidth, pointsize):
+    lc = LineCollection(lines, colors=['blue', 'gray', 'red', 'green'], linewidths=linewidth)
     fig = plt.figure()
     ax1 = fig.add_subplot(1, 1, 1)
     ax1.add_collection(lc)
-    x = [i[0] for j in lines for i in j]
-    y = [i[1] for j in lines for i in j]
+    x = [i[0] for j in pointlines for i in j]
+    y = [i[1] for j in pointlines for i in j]
 
-    ax1.scatter(x, y, s=0.1)
-    print("--- %s seconds ---" % (time.time() - start_time))
-
+    ax1.scatter(x, y, s=pointsize)
     plt.show()
+
+def routes():
+    start_time = time.time()
+    # get all lines to plot
+    lines = list_of_lines_between_points(mk_routegraph(mk_routeset()))
+    #print("--- %s seconds ---" % (time.time() - start_time))
+    # plot lines
+    plot_lines(lines, lines, 0.15, 0.15)
+
 
 
 def k_spanning_tree(G, k=1000):
+    print(G)
     start_time = time.time()
     MST = list(algorithms.tree.mst.minimum_spanning_edges(G))
     weights = [MST[i][2]['weight'] for i in range(len(MST))]
@@ -142,9 +151,12 @@ def k_spanning_tree(G, k=1000):
         # remove the weight from weights for updating index_max
         del weights[index_max]
 
-    # create new graph with the remaining edges
+    # new graph with the remaining edges
     new_G = nx.Graph(MST)
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    return new_G
-
+    # get the lines to be plotted
+    lines = list_of_lines_between_points(new_G)
+    # get lines from root graph in order to plot their associated points, i.e all points
+    all_lines = list_of_lines_between_points(G)
+    print(G)
+    # plot these lines
+    plot_lines(lines, all_lines, 0.8, 0.2)
