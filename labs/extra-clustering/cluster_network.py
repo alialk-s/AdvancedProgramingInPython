@@ -194,7 +194,7 @@ def k_means(data=airports_as_points(), k=7):
 
 
 def demo():
-    if sys.argv[1] == 'airport':
+    if sys.argv[1] == 'airports':
         airports()
     elif sys.argv[1] == 'routes':
         routes()
