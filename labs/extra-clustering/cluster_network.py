@@ -1,11 +1,11 @@
 import csv
-import matplotlib.pyplot as plt
+import sys
 import networkx as nx
 from haversine import haversine
+import matplotlib.pyplot as plt
 from matplotlib.collections import LineCollection
-import time
-
-from networkx import algorithms
+import numpy as np
+from sklearn.cluster import KMeans
 
 AIRPORTS_FILE = 'airports.dat'
 ROUTS_FILE = 'routes.dat'
@@ -24,7 +24,6 @@ def remove_quotation_marks(name):
 
 
 def mk_airportdict(aFILE=AIRPORTS_FILE):
-    #start_time = time.time()
     data = read_file(aFILE)
     airport_dict = {}
     for line in data:
@@ -44,7 +43,6 @@ def mk_airportdict(aFILE=AIRPORTS_FILE):
         except:
             continue
 
-    #print("--- %s seconds ---" % (time.time() - start_time))
     return airport_dict
 
 def mk_routeset(rFILE=ROUTS_FILE):
@@ -63,8 +61,7 @@ def mk_routeset(rFILE=ROUTS_FILE):
     return routs_set
 
 
-
-def mk_routegraph(routeset):
+def mk_routegraph(routeset=mk_routeset()):
     # graph for storing airports as nodes and routes as edges
     g = nx.Graph()
     # all retrieved airports
@@ -91,6 +88,7 @@ def mk_routegraph(routeset):
 
     return g
 
+
 def airports_as_points():
     airports = mk_airportdict()
     points = []
@@ -102,10 +100,13 @@ def airports_as_points():
 
     return points
 
+
 def airports():
+    # coordinates for each airport
     points = airports_as_points()
     plt.scatter(*zip(*points), edgecolors='blue', s=0.2)
     plt.show()
+
 
 def edges_as_lines(graph):
     airport_dict = mk_airportdict()
@@ -119,6 +120,7 @@ def edges_as_lines(graph):
         lines.append([point1, point2])
 
     return lines
+
 
 def plot_lines(lines, points, linewidth, pointsize):
     lc = LineCollection(lines, colors=['blue', 'gray', 'red', 'purple', 'green', 'orange',
@@ -135,6 +137,7 @@ def plot_lines(lines, points, linewidth, pointsize):
     ax1.scatter(x, y, s=pointsize)
     plt.show()
 
+
 def routes():
     # get all lines to be plotted
     lines = edges_as_lines(mk_routegraph(mk_routeset()))
@@ -144,9 +147,10 @@ def routes():
     plot_lines(lines, points, 0.15, 0.15)
 
 
-def k_spanning_tree(G, k=1000):
-    start_time = time.time()
-    MST = list(algorithms.tree.mst.minimum_spanning_edges(G))
+def k_spanning_tree(G=mk_routegraph(mk_routeset()), k=1000):
+    # get minimum spanning tree
+    MST = list(nx.algorithms.tree.mst.minimum_spanning_edges(G))
+    # get weight for each edge
     weights = [MST[i][2]['weight'] for i in range(len(MST))]
 
     for j in range(k - 1):
@@ -166,4 +170,46 @@ def k_spanning_tree(G, k=1000):
     # plot these lines and points
     plot_lines(lines, points, 1, 0.1)
 
-k_spanning_tree(mk_routegraph(mk_routeset()))
+
+def get_color(index):
+    color = ['cyan', 'green', 'purple', 'red', 'blue', 'yellow',
+                                       'gray', 'pink'] # or? list(matplotlib.colors.cnames.values())
+    return color[index%len(color)]
+
+
+def k_means(data=airports_as_points(), k=7):
+    # customize data (airport points)
+    arr = np.array(data)
+    # get predict cluster index of each point
+    kmeans = KMeans(n_clusters=k, random_state=0, n_init=1).fit_predict(arr)
+    for p in range(k):
+        # get x coordinates for all points whose predict cluster index = p
+        x = [arr[i][0] for i in range(len(arr)) if kmeans[i] == p]
+        # get y coordinates for all points whose predict cluster index = p
+        y = [arr[j][1] for j in range(len(arr)) if kmeans[j] == p]
+        # store these points with in scatter in order to get the next set of points (whose predict cluster index=p+1)
+        plt.scatter(x, y, s=0.1, c=get_color(p))
+
+    plt.show()
+
+
+def demo():
+    if sys.argv[1] == 'airport':
+        airports()
+    elif sys.argv[1] == 'routes':
+        routes()
+    elif sys.argv[1] == 'span':
+        if 2 < len(sys.argv):
+            k_spanning_tree(k=int(sys.argv[2]))
+        else:
+            k_spanning_tree()
+    elif sys.argv[1] == 'means':
+        if 2 < len(sys.argv):
+            k_means(k=int(sys.argv[2]))
+        else:
+            k_means()
+
+if __name__ == '__main__':
+    demo()
+
+
