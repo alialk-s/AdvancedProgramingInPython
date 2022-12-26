@@ -89,8 +89,7 @@ def mk_routegraph(routeset=mk_routeset()):
     return g
 
 
-def airports_as_points():
-    airports = mk_airportdict()
+def airports_as_points(airports=mk_airportdict()):
     points = []
     for a in airports:
         # x corresponds to a point's lon and y corresponds to a point's lat
