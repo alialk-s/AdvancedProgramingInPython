@@ -45,7 +45,7 @@ def mk_airportdict(aFILE=AIRPORTS_FILE):
 
     return airport_dict
 
-def mk_routeset(rFILE=ROUTS_FILE):
+def mk_routeset(rFILE):
     data = read_file(rFILE)
     routs_set = set()
 
@@ -61,22 +61,21 @@ def mk_routeset(rFILE=ROUTS_FILE):
     return routs_set
 
 
-def mk_routegraph(routeset=mk_routeset()):
+def mk_routegraph(airport_dict, routeset):
     # graph for storing airports as nodes and routes as edges
     g = nx.Graph()
-    # all retrieved airports
-    airports = mk_airportdict()
+
     for pair in routeset:
         # id of first airport in the tuple
         id1 = pair[0]
         # id of second airport in tuple
         id2 = pair[1]
         # due to the unstructured data
-        if id1 in airports and id2 in airports:
+        if id1 in airport_dict and id2 in airport_dict:
             # lat and lon for the first airport
-            lat1, lon1 = airports[id1]['lat'], airports[id1]['lon']
+            lat1, lon1 = airport_dict[id1]['lat'], airport_dict[id1]['lon']
             # lat and lon for the second airport
-            lat2, lon2 = airports[id2]['lat'], airports[id2]['lon']
+            lat2, lon2 = airport_dict[id2]['lat'], airport_dict[id2]['lon']
             # first airport's geographical point
             p1 = (lat1, lon1)
             # second airport's geographical point
@@ -89,7 +88,7 @@ def mk_routegraph(routeset=mk_routeset()):
     return g
 
 
-def airports_as_points(airports=mk_airportdict()):
+def airports_as_points(airports):
     points = []
     for a in airports:
         # x corresponds to a point's lon and y corresponds to a point's lat
@@ -100,15 +99,14 @@ def airports_as_points(airports=mk_airportdict()):
     return points
 
 
-def airports():
+def airports(airport_dict):
     # coordinates for each airport
-    points = airports_as_points()
+    points = airports_as_points(airport_dict)
     plt.scatter(*zip(*points), edgecolors='blue', s=0.2)
     plt.show()
 
 
-def edges_as_lines(graph):
-    airport_dict = mk_airportdict()
+def edges_as_lines(airport_dict, graph):
     edges = graph.edges
     lines = []
     for pair in edges:
@@ -137,16 +135,16 @@ def plot_lines(lines, points, linewidth, pointsize):
     plt.show()
 
 
-def routes():
+def routes(airport_dict, graph):
     # get all lines to be plotted
-    lines = edges_as_lines(mk_routegraph(mk_routeset()))
+    lines = edges_as_lines(airport_dict, graph)
     # get all points to be plotted
-    points = airports_as_points()
+    points = airports_as_points(airport_dict)
     # plot lines and points
     plot_lines(lines, points, 0.15, 0.15)
 
 
-def k_spanning_tree(G=mk_routegraph(mk_routeset()), k=1000):
+def k_spanning_tree(G, airports, k=1000):
     # get minimum spanning tree
     MST = list(nx.algorithms.tree.mst.minimum_spanning_edges(G))
     # get weight for each edge
@@ -163,9 +161,9 @@ def k_spanning_tree(G=mk_routegraph(mk_routeset()), k=1000):
     # new graph with the remaining edges
     new_G = nx.Graph(MST)
     # get the lines to be plotted
-    lines = edges_as_lines(new_G)
+    lines = edges_as_lines(airports, new_G)
     # get all points from root graph to be plotted, i.e all airports
-    points = airports_as_points()
+    points = airports_as_points(airports)
     # plot these lines and points
     plot_lines(lines, points, 1, 0.1)
 
@@ -176,7 +174,7 @@ def get_color(index):
     return color[index%len(color)]
 
 
-def k_means(data=airports_as_points(), k=7):
+def k_means(data, k=7):
     # customize data (airport points)
     arr = np.array(data)
     # get predict cluster index of each point
@@ -193,20 +191,30 @@ def k_means(data=airports_as_points(), k=7):
 
 
 def demo():
+    # read airports file and create airport dict
+    airport_dict = mk_airportdict(AIRPORTS_FILE)
+    # coordinates of all airports as 2d points
+    airport_points = airports_as_points(airport_dict)
+    # read routes file and create route set
+    route_set = mk_routeset(ROUTS_FILE)
+    # make a route graph
+    route_graph = mk_routegraph(airport_dict, route_set)
+
+    # read command line input and display based on it
     if sys.argv[1] == 'airports':
-        airports()
+        airports(airport_dict)
     elif sys.argv[1] == 'routes':
-        routes()
+        routes(airport_dict, route_graph)
     elif sys.argv[1] == 'span':
         if 2 < len(sys.argv):
-            k_spanning_tree(k=int(sys.argv[2]))
+            k_spanning_tree(route_graph, airport_dict, k=int(sys.argv[2]))
         else:
-            k_spanning_tree()
+            k_spanning_tree(route_graph, airport_dict)
     elif sys.argv[1] == 'means':
         if 2 < len(sys.argv):
-            k_means(k=int(sys.argv[2]))
+            k_means(airport_points, k=int(sys.argv[2]))
         else:
-            k_means()
+            k_means(airport_points)
 
 if __name__ == '__main__':
     demo()
